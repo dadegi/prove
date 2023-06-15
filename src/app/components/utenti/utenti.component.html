@@ -1,0 +1,20 @@
+<h1 class="text-center">Lista utenti</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="text-center">
+                <a class="btn btn-success mb-4" [routerLink]="['/nuovoUtente']">Aggiungi</a>
+            </div>
+            <div class="text-center" *ngIf="!utenti">
+                <span class="spinner-border"></span>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let utente of utenti">
+                    <button type="button" class="me-2" id="elimina" name="elimina" (click)="cancella(utente.id)">❌</button>
+                    <a class="btn btn-primary" [routerLink]="[utente.id]">Dettagli</a>
+                    Nome: {{utente.nome}} - Cognome: {{utente.cognome}}<br>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "email": "luca@iannice.it",
+      "password": "$2a$10$nT7DV4ftjJpKWY2Kt2J35uKkXa3HnLDfogVjh2H3gslZu2Ej3tMpy",
+      "nome": "Luca",
+      "cognome": "Iannice",
+      "corsi": 2,
+      "id": 6
+    }
+  ],
+  "utenti": [
+    {
+      "nome": "Rosita",
+      "cognome": "Bongiovanni",
+      "email": "rosita@bongiovanni.org",
+      "corsi": 4,
+      "id": 1
+    }
+  ]
+}
