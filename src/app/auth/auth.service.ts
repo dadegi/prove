@@ -38,6 +38,19 @@ export class AuthService {
         this.router.navigate(['/login']);
     }
 
+    restore() {
+        const utenteLoggato = localStorage.getItem('user');
+        if (!utenteLoggato) {
+            return;
+        }
+
+        const datiUtente: AuthData = JSON.parse(utenteLoggato);
+        if (this.jwtHelper.isTokenExpired(datiUtente.accessToken)) {
+            return;
+        }
+        this.authSubj.next(datiUtente);
+    }
+
     registra(data: {
         nome: string,
         cognome: string,
