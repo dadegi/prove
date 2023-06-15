@@ -7,6 +7,14 @@
       "cognome": "Iannice",
       "corsi": 2,
       "id": 6
+    },
+    {
+      "email": "lorenzo@visconti.com",
+      "password": "$2a$10$hHh7xSqIFnH93RwlEaK4GOoXtRvWWiGLfdeCrtEfwLgYJuJ53WkVq",
+      "nome": "Lorenzo",
+      "cognome": "Visconti",
+      "corsi": 1,
+      "id": 7
     }
   ],
   "utenti": [

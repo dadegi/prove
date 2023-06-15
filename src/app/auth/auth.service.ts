@@ -17,6 +17,7 @@ export class AuthService {
     jwtHelper = new JwtHelperService();
     private authSubj = new BehaviorSubject<null | AuthData>(null);
     user$ = this.authSubj.asObservable();
+    timeOut: any;
 
     constructor(private http: HttpClient, private router: Router) {}
 
@@ -28,6 +29,7 @@ export class AuthService {
                 this.utente = data;
                 console.log(this.utente);
                 localStorage.setItem('user', JSON.stringify(data));
+                this.autoLogout(data);
             })
         )
     }
@@ -36,6 +38,17 @@ export class AuthService {
         this.authSubj.next(null);
         localStorage.removeItem('user');
         this.router.navigate(['/login']);
+    }
+
+    autoLogout(data: AuthData) {
+        const scadenza = this.jwtHelper.getTokenExpirationDate(
+            data.accessToken
+        ) as Date;
+
+        const tempoScadenza = scadenza.getTime() - new Date().getTime();
+        this.timeOut = setTimeout(() => {
+            this.logout()
+        }, tempoScadenza);
     }
 
     restore() {
@@ -49,6 +62,7 @@ export class AuthService {
             return;
         }
         this.authSubj.next(datiUtente);
+        this.autoLogout(datiUtente);
     }
 
     registra(data: {
